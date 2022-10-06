@@ -1,0 +1,50 @@
+{% extends './fragments/base.html' %}
+
+{% block content%}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="accordion" id="accordionExample">
+                {% for each in news %}
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="title{{each.id}}">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#snippet{{each.id}}" aria-expanded="false" aria-controls="snippet{{each.id}}">
+                        {{each.title}}
+                      </button>
+                    </h2>
+                    <div id="snippet{{each.id}}" class="accordion-collapse collapse" aria-labelledby="title{{each.id}}" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <p>{{each.snippet}}</p>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            {% if is_paginated %}
+            {% if page_obj.has_previous %}
+            <button class="btn btn-secondary" style="color: black; font-size:20px">
+                <a href="?page={{ page_obj.previous_page_number }}" style="text-decoration: inherit;"> Previous </a>
+            </button>
+            {% else %}
+            <button class="disabled btn btn-secondary" style="color: black; font-size:20px">
+                Previous
+            </button>
+            {% endif %}
+            {% if page_obj.has_next %}
+            <button class="btn btn-success" style="color: black; font-size:20px; ">
+                <a href="?page={{ page_obj.next_page_number }}" style="text-decoration: inherit;"> Next </a>
+            </button>
+            {% else %}
+            <button class="disabled btn btn-success" style="color: black; font-size:20px">
+                Next
+            </button>
+            {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

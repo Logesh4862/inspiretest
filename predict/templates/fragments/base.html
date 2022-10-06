@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>News APP</title>
+
+    {% block cssscripts %}
+    {% include './css.html' %}
+    {% endblock %}
+
+    {% block customstyles %}
+    {% endblock %}
+
+</head>
+
+<body>
+    {% block navigation %}
+    {% include './navigation.html' %}
+    {% endblock %}
+
+    <div class="pageTitle">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>{{title}}</h2>
+                    <hr />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% block scripts %}
+    {% include './js.html' %}
+    {% endblock %}
+</body>
+
+</html>
